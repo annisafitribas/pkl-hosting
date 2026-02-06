@@ -11,6 +11,9 @@ nixPkgs = [
 cmds = [
   "export APP_ENV=production",
   "export APP_DEBUG=false",
+  "export APP_KEY=base64:AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=",
+  "export DB_CONNECTION=sqlite",
+  "export COMPOSER_ALLOW_SUPERUSER=1",
   "composer install --no-dev --no-scripts --no-interaction --prefer-dist"
 ]
 
