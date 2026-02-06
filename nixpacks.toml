@@ -7,15 +7,9 @@ nixPkgs = [
   "php82Extensions.pdo_mysql"
 ]
 
-[phases.install]
+[phases.build]
 cmds = [
-  "export APP_ENV=production",
-  "export APP_DEBUG=false",
-  "export APP_KEY=base64:AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=",
-  "export DB_CONNECTION=sqlite",
-  "export COMPOSER_ALLOW_SUPERUSER=1",
-  "export COMPOSER_IGNORE_PLATFORM_REQS=1",
-  "composer install --no-dev --no-scripts --no-interaction --prefer-dist"
+  "composer install --no-dev --no-scripts --no-interaction --prefer-dist --ignore-platform-req=ext-bcmath"
 ]
 
 [start]
