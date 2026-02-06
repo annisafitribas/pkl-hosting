@@ -10,12 +10,14 @@ COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
 WORKDIR /var/www/html
 
-COPY composer.json composer.lock ./
-RUN composer install --no-dev --optimize-autoloader
-
+# Copy semua source dulu (BIAR artisan ADA)
 COPY . .
 
+# Install dependency TANPA script
+RUN composer install --no-dev --optimize-autoloader --no-scripts
+
+# Permission
 RUN chown -R www-data:www-data storage bootstrap/cache
 
 EXPOSE 8000
-CMD php artisan serve --host=0.0.0.0 --port=$PORT
+CMD php artisan serve --host=0.0.0.0 --port=${PORT}
