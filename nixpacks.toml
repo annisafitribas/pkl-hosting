@@ -4,12 +4,15 @@ nixPkgs = [
   "php82Extensions.bcmath",
   "php82Extensions.mbstring",
   "php82Extensions.openssl",
-  "php82Extensions.pdo_mysql"
+  "php82Extensions.pdo_mysql",
+  "nodejs_20"
 ]
 
 [phases.build]
 cmds = [
-  "composer install --no-dev --no-scripts --no-interaction --prefer-dist --ignore-platform-req=ext-bcmath"
+  "npm ci",
+  "npm run build",
+  "composer install --no-dev --optimize-autoloader --no-interaction"
 ]
 
 [start]
