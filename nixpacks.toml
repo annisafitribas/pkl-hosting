@@ -9,7 +9,9 @@ nixPkgs = [
 
 [phases.install]
 cmds = [
-  "composer install --no-dev --optimize-autoloader"
+  "export APP_ENV=production",
+  "export APP_DEBUG=false",
+  "composer install --no-dev --no-scripts --no-interaction --prefer-dist"
 ]
 
 [start]
